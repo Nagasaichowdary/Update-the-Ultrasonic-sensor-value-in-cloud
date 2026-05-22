@@ -199,9 +199,20 @@ if((new_time-old_time>=uplink_interval)&&(network_joined_status==1)){
   }
 }
 ```
-# UPLINK FORMAT :
-<img width="1920" height="1080" alt="Screenshot 2026-05-22 093641" src="https://github.com/user-attachments/assets/c3d64d30-d850-42eb-8450-7c2ff0c461ed" />
+# UPLINK FORMATTER :
+```
+function Decoder(bytes, port) {
+  // Extract distance from the first two bytes
+  var distance = (bytes[0] << 8) + bytes[1];
 
+  // Convert to centimeters (assuming millimeters are being sent)
+  var distance_in_cm = distance / 100;
+
+  return {
+    "distance": distance_in_cm
+  }
+};
+```
 # CIRCUIT DIAGRAM:
 <img width="558" height="744" alt="Screenshot 2026-05-19 113143" src="https://github.com/user-attachments/assets/779dda2c-f6c3-4ff3-9226-708b7705497e" />
 
